@@ -20,9 +20,14 @@ class ViewController: NSViewController {
         let day1 = Day1()
         output.append(day1.part1())
         output.append(day1.part2())
+        
         let day2 = Day2()
         output.append(day2.part1())
         output.append(day2.part2())
+        
+        let day3 = Day3()
+        output.append(day3.part1())
+        output.append(day3.part2())
         
         label.stringValue = "\(output.joined(separator: "\n"))"
     }
