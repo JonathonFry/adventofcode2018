@@ -15,6 +15,8 @@
 		6FFD029C21B455B600144FAB /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD029B21B455B600144FAB /* Day1.swift */; };
 		6FFD029E21B4560600144FAB /* day1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD029D21B4560600144FAB /* day1.txt */; };
 		6FFD02A121B4587400144FAB /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD02A021B4587400144FAB /* FileUtils.swift */; };
+		6FFD02A321B4910900144FAB /* Day2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD02A221B4910900144FAB /* Day2.swift */; };
+		6FFD02A521B491AE00144FAB /* day2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6FFD02A421B491AE00144FAB /* day2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		6FFD029B21B455B600144FAB /* Day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1.swift; sourceTree = "<group>"; };
 		6FFD029D21B4560600144FAB /* day1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day1.txt; sourceTree = "<group>"; };
 		6FFD02A021B4587400144FAB /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		6FFD02A221B4910900144FAB /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
+		6FFD02A421B491AE00144FAB /* day2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				6FFD028721B4557F00144FAB /* adventofcode2018.entitlements */,
 				6FFD029B21B455B600144FAB /* Day1.swift */,
 				6FFD02A021B4587400144FAB /* FileUtils.swift */,
+				6FFD02A221B4910900144FAB /* Day2.swift */,
 			);
 			path = adventofcode2018;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				6FFD029D21B4560600144FAB /* day1.txt */,
+				6FFD02A421B491AE00144FAB /* day2.txt */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			files = (
 				6FFD028221B4557F00144FAB /* Assets.xcassets in Resources */,
 				6FFD029E21B4560600144FAB /* day1.txt in Resources */,
+				6FFD02A521B491AE00144FAB /* day2.txt in Resources */,
 				6FFD028521B4557F00144FAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FFD028021B4557E00144FAB /* ViewController.swift in Sources */,
+				6FFD02A321B4910900144FAB /* Day2.swift in Sources */,
 				6FFD029C21B455B600144FAB /* Day1.swift in Sources */,
 				6FFD027E21B4557E00144FAB /* AppDelegate.swift in Sources */,
 				6FFD02A121B4587400144FAB /* FileUtils.swift in Sources */,
