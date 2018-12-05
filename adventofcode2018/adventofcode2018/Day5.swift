@@ -14,42 +14,41 @@ class Day5 {
     func part1() -> String {
         let data = FileUtils.loadFile(name: "day5")
         let filtered = String(data.filter { !" \n\t\r".contains($0) })
-        var processed = ""
-        let solution = solve(processed: &processed, input: filtered)
-        print("Day 5 part 1: \(solution.count)")
+        let solution = tempt(input: Array(filtered).map({ String($0) }))
         
         return "Day 5 part 1: \(solution.count)"
     }
     
-    func solve(processed: inout String, input: String) -> String {
-        print("solving processed: \(processed.count), input: \(input.count)")
+    
+    func tempt(input: [String]) -> String {
         var output = input
+        var calculating = true
         var safe = 0
-        for i in 0..<input.count-1 {
-            let a = input[i]
-            let b = input[i+1]
-            if a.lowercased() == b.lowercased() && ((isLowercase(input: a) && isUppercase(input: b)) || (isLowercase(input: b) && isUppercase(input: a))) {
-                safe = i - 1
-                output = removeCharacterAt(input: output, index: i)
-                output = removeCharacterAt(input: output, index: i)
-               break
+        while(calculating) {
+            for i in safe..<output.count {
+                if i < output.count - 1 {
+                    let a = output[i]
+                    let b = output[i+1]
+                    
+                    if a.lowercased() == b.lowercased() && ((isLowercase(input: a) && isUppercase(input: b)) || (isLowercase(input: b) && isUppercase(input: a))) {
+                        output.removeSubrange(i..<i+2)
+                        if i - 1 > 0 {
+                            safe = i - 1
+                        }
+                        
+                        break
+                    }
+                    
+                    
+                    if i == output.count - 2 {
+                        calculating = false
+                    }
+                }
             }
         }
-        
-        if output != input {
-            if safe > 0 {
-                // split string
-                let newProcessed = output.substring(toIndex: safe)
-                processed = processed + newProcessed
-                
-                //TODO - correctly substring by range
-                output = output.substring(fromIndex: safe)
-            }
-            return solve(processed: &processed, input: output)
-        } else {
-            return processed + input
-        }
+        return output.joined()
     }
+
     
     func isLowercase(input: String) -> Bool {
         return CharacterSet.lowercaseLetters.contains(input.unicodeScalars.first!)
@@ -57,13 +56,6 @@ class Day5 {
     
     func isUppercase(input: String) -> Bool {
         return CharacterSet.uppercaseLetters.contains(input.unicodeScalars.first!)
-    }
-    
-    func removeCharacterAt(input: String, index: Int) -> String {
-        var output = input
-        let index = input.index(input.startIndex, offsetBy: index, limitedBy: input.endIndex)
-        output.remove(at: index!)
-        return output
     }
     
     func part2() -> String {
