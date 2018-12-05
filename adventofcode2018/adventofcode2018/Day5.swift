@@ -14,13 +14,13 @@ class Day5 {
     func part1() -> String {
         let data = FileUtils.loadFile(name: "day5")
         let filtered = String(data.filter { !" \n\t\r".contains($0) })
-        let solution = tempt(input: Array(filtered).map({ String($0) }))
+        let solution = solve(input: Array(filtered).map({ String($0) }))
         
         return "Day 5 part 1: \(solution.count)"
     }
     
     
-    func tempt(input: [String]) -> String {
+    func solve(input: [String]) -> String {
         var output = input
         var calculating = true
         var safe = 0
@@ -35,20 +35,18 @@ class Day5 {
                         if i - 1 > 0 {
                             safe = i - 1
                         }
-                        
                         break
                     }
-                    
-                    
-                    if i == output.count - 2 {
-                        calculating = false
-                    }
+                }
+                
+                if i == output.count - 1 {
+                    calculating = false
                 }
             }
         }
         return output.joined()
     }
-
+    
     
     func isLowercase(input: String) -> Bool {
         return CharacterSet.lowercaseLetters.contains(input.unicodeScalars.first!)
@@ -59,6 +57,19 @@ class Day5 {
     }
     
     func part2() -> String {
-        return "Day 5 part 2: "
+        let data = FileUtils.loadFile(name: "day5")
+        let filtered = String(data.filter { !" \n\t\r".contains($0) })
+        let array = Array(filtered).map{ String($0) }
+        
+        let unique = Array(Set(array.map{ $0.uppercased() }))
+        
+        var solutions = [Int]()
+        for letter in unique {
+            let input = Array(array).filter{ $0 != letter && $0 != letter.lowercased()}
+            let solution = solve(input: input)
+            solutions.append(solution.count)
+        }
+        
+        return "Day 5 part 2: \(solutions.min()!)"
     }
 }
