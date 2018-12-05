@@ -103,7 +103,91 @@ class Day4 {
     }
     
     func part2() -> String {
-        return "Day 4 Part 2: "
+        let data = FileUtils.loadFile(name: "day4")
+        
+        let array = FileUtils.split(data: data)
+        let sorted = array.sorted(by: { return $0.compare($1) == .orderedAscending })
+        
+        var guardMap = [String:[[Int]]]() // guardId:[ [minute, minute]]
+        
+        var asleepAt: Int?
+        
+        var currentGuardId: String?
+        var asleep = [Int]()
+        
+        // Write guard data
+        for item in sorted {
+            let dateString = item.slice(from: "[", to: "]")
+            let minute = getMinute(date: dateString!)
+            let guardId = item.slice(from: "#", to: " ")
+            
+            if guardId != nil {
+                if currentGuardId != nil {
+                    var array = guardMap[currentGuardId!] ?? []
+                    array.append(asleep)
+                    guardMap[currentGuardId!] = array
+                }
+                
+                currentGuardId = guardId
+                asleep = []
+                asleepAt = nil
+            }
+            
+            if item.contains("falls") {
+                asleepAt = minute
+                
+            }
+            
+            if item.contains("wakes") {
+                let awakeAt = minute
+                for i in asleepAt!..<awakeAt {
+                    asleep.append(i)
+                }
+                asleepAt = nil
+            }
+            
+        }
+        
+        // Write final data
+        if currentGuardId != nil {
+            var array = guardMap[currentGuardId!] ?? []
+            array.append(asleep)
+            guardMap[currentGuardId!] = array
+        }
+        
+        // Find most common minute asleep
+        var guardMinutes = [String : [Int:Int]]()
+        
+        // For each guard count the minute asleep
+        for (guardId, sleeps) in guardMap {
+            var minutes = guardMinutes[guardId] ?? [Int:Int]()
+            
+            for sleep in sleeps {
+                for minute in sleep {
+                    var count = minutes[minute] ?? 0
+                    count += 1
+                    minutes[minute] = count
+                }
+            }
+            guardMinutes[guardId] = minutes
+        }
+        
+        var highestGuardId = ""
+        var highestMinute = 0
+        var highestCount = 0
+        for (guardId, minutesCount) in guardMinutes {
+            for (minute, count) in minutesCount {
+                if count > highestCount {
+                    highestCount = count
+                    highestMinute = minute
+                    highestGuardId = guardId
+                }
+            }
+        }
+
+        let output = Int(highestGuardId)! * highestMinute
+        
+        return "Day 4 Part 2: \(output)"
     }
     
     private func getMinute(date: String) -> Int {
