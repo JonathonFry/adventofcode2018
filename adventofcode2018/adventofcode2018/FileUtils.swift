@@ -64,8 +64,13 @@ extension String {
     }
 }
 
-struct Pair<T:Hashable,U:Hashable> : Hashable {
+struct Pair<T:Hashable,U:Hashable> : Hashable, CustomStringConvertible {
     let values : (T, U)
+    
+    var description: String {
+        let (a,b) = values
+        return "(\(a), \(b))"
+    }
     
     var hashValue : Int {
         get {
