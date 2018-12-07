@@ -7,77 +7,6 @@ import Foundation
 
 class Day7 {
 
-    /*
-    Step {
-    key
-    children [Step]
-   }
-
-   [C] -> A, F
-   [A] -> B, D
-   [B] -> E
-   [D] -> E
-   [F] -> E
-
-   Step 1. Find root node (has no before step X)
-   Step 2. Starting at root node, find children
-   Step 3. Calculate what step to process next
-
-
-   calculate steps that are available to be run e.g. [A] [F]
-
-   from available steps, choose one and run it [A]
-   update available steps
-   sort alphabetically
-
-   maintain a history of completed steps
-   to check if step is available see if its conditions have been met (aka parent is in completed)
-
-
-   [B] [D] [F]
-
-    RUN
-
-   [C]
-
-   [A] [F] -> [A]
-
-   [F] [B] [D] -> [B]
-
-   [F] [D] -> [D]
-
-   [F] -> [F]
-
-   [E] -> [E]
-
-   Step 1. Calculate tree
-   Find root node
-   find children of node
-
-
-    calculating available steps
-    - if root add sub steps to available
-    of available steps order by alphabetically
-
-    while available steps has items
-    {
-        order alphabetically
-        select first step to 'evaluate'
-        evaluating = adding step to completed
-        for each child of step check if it is available (has all dependent parents in complete)
-        add to available if so
-
-    }
-
-    available steps
-    completed steps
-
-
-    output = completed steps to string
-
-
-    */
-
     func part1() -> String {
         let data = FileUtils.loadFile(name: "day7")
         let array = FileUtils.split(data: data)
@@ -95,9 +24,6 @@ class Day7 {
             steps[key] = children
         }
 
-        print("steps: \(steps)")
-
-
         // Find root
         var keys: Set<String> = Set(steps.compactMap {
             $0.0
@@ -106,14 +32,7 @@ class Day7 {
             $0.1
         })
 
-        print("keys: \(keys)")
-        print("children: \(children)")
-
         keys.subtract(children)
-        print("root keys: \(keys)")
-        let root = keys.first!
-
-        print("root: \(root)")
 
         var availableSteps = [String]()
         var history = [String]()
@@ -149,10 +68,7 @@ class Day7 {
 
         }
 
-        print("history: \(history.joined())")
-
-
-        return "Day 7 Part 1: "
+        return "Day 7 Part 1: \(history.joined())"
     }
 
     func part2() -> String {
