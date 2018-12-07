@@ -98,14 +98,6 @@ class Day7 {
 
         keys.subtract(children)
 
-
-        /*
-        Define a list of workers
-        worker works on a step
-        duration of work is  60 + (if a = 1)
-
-        */
-
         var workers = [Worker(), Worker(), Worker(), Worker(), Worker()]
 
         var availableSteps = [String]()
@@ -113,7 +105,7 @@ class Day7 {
 
         availableSteps.append(contentsOf: keys)
 
-        var duration = 0
+        var duration = -1
 
         while availableSteps.count > 0 || isWorking(workers: &workers) {
             availableSteps = availableSteps.sorted {
@@ -124,7 +116,7 @@ class Day7 {
             // iterate through workers and do work (count down duration)
             // if any workers hit = mark as complete and add to history
 
-            for var worker in workers {
+            for worker in workers {
                 if worker.calculating() {
                     worker.work()
                     if worker.duration == 0 {
@@ -155,20 +147,15 @@ class Day7 {
                 }
             }
 
-            //TODO - mutability, not updating the correct workers
-
-            for (i, step) in availableSteps.enumerated() {
-
-                if var worker = free(workers: &workers) {
+            for step in availableSteps {
+                if let worker = free(workers: &workers) {
                     worker.key = step
                     worker.duration = stepDuration(letter: step)
-                    availableSteps.remove(at: i)
+                    availableSteps.removeAll(where: { $0 == step })
                 } else {
                     break
                 }
             }
-
-            print("\(availableSteps.count) \(isWorking(workers: &workers))")
 
             duration += 1
         }
@@ -188,14 +175,13 @@ class Day7 {
     func isWorking(workers: inout[Worker]) -> Bool {
         for worker in workers {
             if worker.calculating() {
-                print("worker is working: \(worker.key)")
                 return true
             }
         }
         return false
     }
 
-    struct Worker {
+    class Worker {
         var key: String?
         var duration: Int = 0
 
@@ -205,12 +191,12 @@ class Day7 {
             self.duration = duration
         }
 
-        mutating func finish() {
+        func finish() {
             self.key = nil
             self.duration = 0
         }
 
-        mutating func work() {
+        func work() {
             self.duration -= 1
         }
 
