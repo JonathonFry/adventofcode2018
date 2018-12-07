@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545E5458BC4E5A1C62F92EA4 /* day7.txt in Resources */ = {isa = PBXBuildFile; fileRef = 545E524F722DBEA3BC6A6137 /* day7.txt */; };
+		545E58D03974C2FF6808530E /* Day7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545E52EA8B22A0033376474A /* Day7.swift */; };
 		6F9A675121B915EE00DA9407 /* Day6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9A675021B915EE00DA9407 /* Day6.swift */; };
 		6F9A675321B9161C00DA9407 /* day6.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6F9A675221B9161C00DA9407 /* day6.txt */; };
 		6FAF295D21B674E600C22F4E /* day4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6FAF295C21B674E600C22F4E /* day4.txt */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		545E524F722DBEA3BC6A6137 /* day7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day7.txt; sourceTree = "<group>"; };
+		545E52EA8B22A0033376474A /* Day7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day7.swift; sourceTree = "<group>"; };
 		6F9A675021B915EE00DA9407 /* Day6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6.swift; sourceTree = "<group>"; };
 		6F9A675221B9161C00DA9407 /* day6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day6.txt; sourceTree = "<group>"; };
 		6FAF295C21B674E600C22F4E /* day4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = day4.txt; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				6FAF295E21B674F300C22F4E /* Day4.swift */,
 				6FAF296221B7F32B00C22F4E /* Day5.swift */,
 				6F9A675021B915EE00DA9407 /* Day6.swift */,
+				545E52EA8B22A0033376474A /* Day7.swift */,
 			);
 			path = adventofcode2018;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				6FAF295C21B674E600C22F4E /* day4.txt */,
 				6FAF296021B7F32000C22F4E /* day5.txt */,
 				6F9A675221B9161C00DA9407 /* day6.txt */,
+				545E524F722DBEA3BC6A6137 /* day7.txt */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				6FAF295D21B674E600C22F4E /* day4.txt in Resources */,
 				6FFD02A921B52EB300144FAB /* day3.txt in Resources */,
 				6FAF296121B7F32000C22F4E /* day5.txt in Resources */,
+				545E5458BC4E5A1C62F92EA4 /* day7.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +264,7 @@
 				6FFD027E21B4557E00144FAB /* AppDelegate.swift in Sources */,
 				6F9A675121B915EE00DA9407 /* Day6.swift in Sources */,
 				6FFD02A121B4587400144FAB /* FileUtils.swift in Sources */,
+				545E58D03974C2FF6808530E /* Day7.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

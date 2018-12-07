@@ -41,10 +41,14 @@ class ViewController: NSViewController {
 //            let day5 = Day5()
 //            output.append(day5.part1())
 //            output.append(day5.part2())
-            
-            let day6 = Day6()
-            output.append(day6.part1())
-            output.append(day6.part2())
+//
+//            let day6 = Day6()
+//            output.append(day6.part1())
+//            output.append(day6.part2())
+
+            let day7 = Day7()
+            output.append(day7.part1())
+            output.append(day7.part2())
             
             let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
             
